@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>TO_do_list</title>
+<style>
+  body{
+    display: flex;
+    justify-content: center;
+    padding: 200px;
+    background-color: rgb(203, 246, 246);
+  }
+  .container{
+    background-color: white;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    width: 40%;
+    box-shadow: 0 0 15px  rgb(109, 105, 105);
+    
+  }
+
+  h2{
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+
+  label{
+    display: block;
+    margin: 5px;
+  }
+  input{
+    width: 70%;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px  rgb(109, 105, 105);
+  }
+  form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    
+  }
+  #btn{
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(77, 238, 77);
+    color: white;
+    border:1px solid green;
+    cursor: pointer;
+    box-shadow:0 0 15px  rgb(178, 224, 176); ;
+  }
+  #btn:hover{
+    background-color: rgb(22, 150, 22);
+
+  }
+
+  #result-box{
+    background-color:white;
+    border-radius: 10px;
+    display: none;
+    min-height: 50px;
+    width:90%;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px  rgb(109, 105, 105);
+    margin-left: 0px;
+  }
+
+
+
+</style>
+
+</head>
+<body>
+
+  <div class="container">
+    <h2><b>My To-Do-List</b></h2>
+
+    <form class="form">
+      <label for="text"></label>
+      <input type="text" id="task" placeholder="Add new task......">
+      <button type="submit" id="btn"> Add </button>
+    </form>
+
+    <div class="result" id="result-box"></div>
+
+  </div>
+
+
+  <script>
+    var btn=document.querySelector("#btn")
+    var result=document.querySelector("#result-box")
+    var body=document.querySelector("#body")
+
+    btn.addEventListener("click",(e)=>{
+      e.preventDefault()
+
+      var input=document.querySelector("#task").value.trim();
+
+
+
+
+      if(input!==""){  // Check to avoid empty tasks
+
+      result.style.display="block";
+
+
+
+      // Create a new paragraph element
+      var p=document.createElement("p");
+      p.textContent=input;
+      p.style.backgroundColor = "rgb(186, 243, 198)";
+      p.style.margin="5px";
+      p.style.boxShadow="0 0 15px  rgb(109, 105, 105)";
+      p.style.padding="5px";
+      p.style.display = "flex";
+      p.style.justifyContent = "space-between";
+      p.style.alignItems = "center";
+      p.style.margin = "5px";
+
+
+      var btn1=document.createElement("button")
+      btn1.innerText="X";
+      btn1.style.backgroundColor="red";
+      btn1.style.display="flex";
+      btn1.style.flexDirection="row";
+      btn1.style.justifyContent="center";
+      btn1.style.alignItems="center";
+      btn1.style.borderRadius="15%"
+      btn.style.border="none"
+      btn1.style.width = "25px";
+      btn1.style.height = "25px";
+      btn1.style.cursor = "pointer";
+
+
+
+      p.appendChild(btn1);
+      result.appendChild(p); // Append it to the result box
+
+      btn1.addEventListener("click",()=>{
+        p.remove();
+      })
+
+      
+      let mode="1";
+      p.addEventListener("click",()=>{
+        if(mode=="1"){
+          mode="2"
+        p.style.textDecoration="line-through";
+        }
+        else if(mode=="2"){
+          mode="1"
+          p.style.textDecoration="none";
+        }
+      })
+
+
+    
+
+          // Clear the input field
+    document.querySelector("#task").value = "";
+
+      }
+
+      
+    })
+
+  </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
